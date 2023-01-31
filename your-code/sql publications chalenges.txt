@@ -1,0 +1,60 @@
+CHALLENGE 1
+
+select authors.au_id,authors.au_lname,authors.au_fname , titles.title, publishers.pub_id
+
+from authors
+left join titleauthor
+on authors.au_id=titleauthor.au_id
+
+left join titles
+on titleauthor.title_id=titles.title_id
+
+left join publishers
+on titles.pub_id=publishers.pub_id
+
+
+count(titles.title_id)= AS "TITLE COUNT"
+GROUP BY authors.au_id, publishers.pub_name
+  order by `title count`desc;
+SELECT sum(`title count`)
+From counts;
+select * from titleauthor;
+
+CHALLENGE 2
+
+select authors.au_id,authors.au_lname,authors.au_fname , titles.title, publishers.pub_id,count(titles.title_id)= AS "TITLE COUNT"
+
+
+count(titles.title_id)= AS "TITLE COUNT"
+GROUP BY authors.au_id, publishers.pub_name
+  order by `title count`desc;
+
+CHALLENGE 3
+
+SELECT authors.au_fname, authors.au_lname, authors.au_id,
+sum(sales.qty) as 'TOTAL'
+	FROM authors
+		LEFT JOIN titleauthor
+			ON titleauthor.au_id = authors.au_id
+		LEFT JOIN titles
+			ON titleauthor.title_id = titles.title_id
+		LEFT JOIN sales
+			ON sales.title_id = titles.title_id
+    GROUP BY authors.au_id, authors.au_lname, authors.au_fname
+    ORDER BY `TOTAL` DESC
+    LIMIT 3
+
+
+CHALLENGE 4
+
+COALESCE(sum(sales.qty),0) as 'TOTAL'
+	FROM authors
+		LEFT JOIN titleauthor
+			ON titleauthor.au_id = authors.au_id
+		LEFT JOIN titles
+			ON titleauthor.title_id = titles.title_id
+		LEFT JOIN sales
+			ON sales.title_id = titles.title_id
+    GROUP BY authors.au_id
+    ORDER BY `TOTAL` DESC
+
