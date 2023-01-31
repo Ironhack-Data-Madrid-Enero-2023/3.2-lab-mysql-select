@@ -40,7 +40,6 @@ left join titles
 on titleauthor.title_id = titles.title_id
 left join sales
 on titles.title_id = sales.title_id
-group by authors.au_id, sales.qty
-order by sales.qty desc
-limit 23
+group by authors.au_id, au_lname, au_fname
+order by `TOTAL` desc
 ;
