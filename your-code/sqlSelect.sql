@@ -1,4 +1,3 @@
-Challenge 1 and 2
 
 SELECT a.au_id AS 'AUTHOR ID', a.au_lname AS 'LAST NAME', a.au_fname AS 'FIRST NAME', count(title) AS "Title Count", pu.pub_name AS  "Publisher"
 FROM authors AS a  
@@ -9,7 +8,6 @@ LEFT JOIN publishers AS pu ON ti.pub_id = pu.pub_id
 GROUP BY a.au_id, pu.pub_name;
 
 
-Challenge 3
 
 SELECT a.au_id AS 'AUTHOR ID', a.au_lname AS 'LAST NAME', a.au_fname AS 'FIRST NAME', sum(qty) AS "Total"
 FROM authors AS a  
@@ -23,7 +21,6 @@ LIMIT 3;
 ;
 
 
-Challenge 4
 
 SELECT a.au_id AS 'AUTHOR ID', a.au_lname AS 'LAST NAME', a.au_fname AS 'FIRST NAME', COALESCE(sum(qty), 0) AS "Total"
 FROM authors AS a  
