@@ -74,3 +74,4 @@ Now modify your solution in Challenge 3 so that the output will display all 23 a
 [MySQL Reference: Group By](https://dev.mysql.com/doc/refman/8.0/en/group-by-modifiers.html)
 
 [MySQL Reference: SUM Function](https://dev.mysql.com/doc/refman/8.0/en/group-by-functions.html#function_sum)
+cambio
