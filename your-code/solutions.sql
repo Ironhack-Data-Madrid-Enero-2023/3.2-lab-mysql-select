@@ -1,4 +1,4 @@
-select authors.au_id, authors.au_lname, authors.au_fname ,titleauthor.title_id, publishers.pub_name
+select authors.au_id, authors.au_lname, authors.au_fname ,titles.title, publishers.pub_name
 from authors 
 left join titleauthor 
 on authors.au_id=titleauthor.au_id
