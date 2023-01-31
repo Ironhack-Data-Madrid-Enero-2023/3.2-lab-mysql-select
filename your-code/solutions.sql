@@ -19,28 +19,24 @@ ON pu.pub_id = ti.pub_id
 GROUP BY au.au_id, au_lname, au_fname, pub_name
 HAVING au.au_id IS NOT NULL and au_lname IS NOT NULL and au_fname IS NOT NULL and pub_name IS NOT NULL;
 
-SELECT au.au_id AS 'AUTHOR ID', au_lname AS 'LAST NAME', au_fname AS 'FIRST NAME', COUNT(ti.title_id) AS 'TOTAL'
+SELECT au.au_id AS 'AUTHOR ID', au_lname AS 'LAST NAME', au_fname AS 'FIRST NAME', SUM(sa.qty) AS 'TOTAL'
 FROM authors AS au
 LEFT JOIN titleauthor AS tiau
 ON au.au_id = tiau.au_id
-LEFT JOIN titles AS ti
-ON tiau.title_id = ti.title_id
-LEFT JOIN publishers AS pu
-ON pu.pub_id = ti.pub_id
+LEFT JOIN sales AS sa
+ON sa.title_id = tiau.title_id
 GROUP BY au.au_id, au_lname, au_fname
 HAVING au.au_id IS NOT NULL and au_lname IS NOT NULL and au_fname IS NOT NULL
-ORDER BY COUNT(ti.title_id) DESC
+ORDER BY SUM(sa.qty) DESC
 LIMIT 3;
 
-SELECT au.au_id AS 'AUTHOR ID', au_lname AS 'LAST NAME', au_fname AS 'FIRST NAME', COUNT(ti.title_id) AS 'TOTAL'
+SELECT au.au_id AS 'AUTHOR ID', au_lname AS 'LAST NAME', au_fname AS 'FIRST NAME',  COALESCE(SUM(sa.qty), 0) AS 'TOTAL'
 FROM authors AS au
 LEFT JOIN titleauthor AS tiau
 ON au.au_id = tiau.au_id
-LEFT JOIN titles AS ti
-ON tiau.title_id = ti.title_id
-LEFT JOIN publishers AS pu
-ON pu.pub_id = ti.pub_id
+LEFT JOIN sales AS sa
+ON sa.title_id = tiau.title_id
 GROUP BY au.au_id, au_lname, au_fname
 HAVING au.au_id IS NOT NULL and au_lname IS NOT NULL and au_fname IS NOT NULL
-ORDER BY COUNT(ti.title_id) DESC
+ORDER BY SUM(sa.qty) DESC
 LIMIT 23;
