@@ -1,4 +1,6 @@
+
 Challenge I
+
 
 select authors.au_id as AUTHOR_ID, authors.au_lname, authors.au_fname, titles.title, publishers.pub_name
 	from authors
@@ -26,7 +28,10 @@ select authors.au_id as AUTHOR_ID, authors.au_lname, authors.au_fname, count(tit
     group by AUTHOR_ID, pub_name
     ;
 
+
+
 Challenge III
+
 
 select authors.au_id as AUTHOR_ID, authors.au_lname, authors.au_fname, sum(sales.qty) as total
 	from authors
