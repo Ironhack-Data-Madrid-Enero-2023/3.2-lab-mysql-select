@@ -1,4 +1,4 @@
-Challenge I
+
 
 select authors.au_id as AUTHOR_ID, authors.au_lname, authors.au_fname, titles.title, publishers.pub_name
 	from authors
@@ -11,7 +11,7 @@ select authors.au_id as AUTHOR_ID, authors.au_lname, authors.au_fname, titles.ti
   ;
 
 
-Challenge II
+
 
 
 select authors.au_id as AUTHOR_ID, authors.au_lname, authors.au_fname, count(titles.title), publishers.pub_name
@@ -26,7 +26,7 @@ select authors.au_id as AUTHOR_ID, authors.au_lname, authors.au_fname, count(tit
     group by AUTHOR_ID, pub_name
     ;
 
-Challenge III
+
 
 select authors.au_id as AUTHOR_ID, authors.au_lname, authors.au_fname, sum(sales.qty) as total
 	from authors
@@ -41,7 +41,7 @@ select authors.au_id as AUTHOR_ID, authors.au_lname, authors.au_fname, sum(sales
     limit 3    
     ;
     
-Challenge IV
+
 
 select authors.au_id as AUTHOR_ID, authors.au_lname, authors.au_fname, coalesce(sum(sales.qty), 0) as total
 	from authors
